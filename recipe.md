@@ -2,8 +2,8 @@
 
 _Put or write the user story here. Add any clarifying notes you might have._
 # As a user
-# So that I can...
-# I want to see...
+# So that I can find my tasks among all my notes
+# I want to check if a line from my notes includes the string `#TODO`.
 
 ## 2. Design the Function Signature
 
@@ -12,14 +12,14 @@ _Include the name of the function, its parameters, return value, and side effect
 ```python
 # EXAMPLE
 
-def extract_uppercase(mixed_words):
-    """Extracts uppercase words from a string
+def find_to_do_tasks(text):
+    """Return any relevant notes with the string '#TODO'
 
     Parameters: (list all parameters and their types)
-        mixed_words: a string containing words (e.g. "hello WORLD")
+        text, string
 
     Returns: (state the return value and its type)
-        a list of strings, each one a word (e.g. ["WORLD"])
+        True/False, boolean 
 
     Side effects: (state any side effects)
         This function doesn't print anything or have any other side-effects
@@ -35,34 +35,30 @@ _Make a list of examples of what the function will take and return._
 # EXAMPLE
 
 """
-Given a lower and an uppercase word
-It returns a list with the uppercase word
+Given a string with #TODO, the fn returns the value True
 """
-extract_uppercase("hello WORLD") => ["WORLD"]
+def test_find_to_do_tasks_returns_True_when_match_found():
+
 
 """
-Given two uppercase words
-It returns a list with both words
+Given a string without #TODO, fn returns false
 """
-extract_uppercase("HELLO WORLD") => ["HELLO", "WORLD"]
+def test_find_to_do_tasks_returns_False_when_no_match():
 
 """
-Given two lowercase words
-It returns an empty list
+Given a string with lowercase #todo, fn returns True
 """
-extract_uppercase("hello world") => []
+def test_find_to_do_tasks_returns_True_when_to_do_is_lowercase():
 
 """
-Given a lower and a mixed case word
-It returns an empty list
+Raise an err when text input is empty string
 """
-extract_uppercase("hello WoRLD") => []
+def test_find_to_do_tasks_raises_err_when_empty_string_passed():
 
 """
-Given a lowercase word and an uppercase word with an exclamation mark
-It returns a list with the uppercase word, no exclamation mark
+Raise an err when input type not string
 """
-extract_uppercase("hello WORLD!") => ["WORLD"]
+def test_find_to_do_tasks_raises_err_when_input_not_type_string():
 
 """
 Given an empty string
